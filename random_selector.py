@@ -1,12 +1,14 @@
+occupations = {}
+
 def readFile():
     i = 0
-    occupations = {}
     f = open("occupations.csv", 'rU')
     stuff = f.read();
     lst = stuff.split('\n')
     lst = lst[1:-1]
     counter = 0 
-
+    print lst
+    print "\n"
     while i < len(lst) :
         item = lst[i]
         
@@ -24,11 +26,20 @@ def readFile():
            percent = item[pos+1:]
            print "title: " + title
            print "percent: " + percent
+           
+        percent = float(percent)
+        occupations[title] = [counter, counter+percent]
         i +=1
+        counter += percent
+        
+    return occupations
   
         
 readFile()
-
+print "\n"
+for keys,values in occupations.items():
+    print keys
+    print values
 
     
 
