@@ -7,30 +7,28 @@ def readFile():
     lst = lst[1:-1]
     counter = 0 
 
-    while i < len(lst):
+    while i < len(lst) :
         item = lst[i]
-        pos = item.find(',')
-        title = item[0:pos]
         
-        percentage = item[pos+1:]
-        print item
-        print pos
-        print percentage
+        if item[0] == '"' :
+            item = item[1:]
+            pos = item.find('"')
+            title = item[0:pos]
+            percent = item[pos+2:]
+            print "title: " + title
+            print "percent: " + percent
+            
+        else:
+           pos = item.find(',')
+           title = item[0:pos]
+           percent = item[pos+1:]
+           print "title: " + title
+           print "percent: " + percent
+        i +=1
+  
         
- #       percentage= float(percentage)
-        print percentage
-  #     occupations[title] = [counter, counter+percentage]
-        i += 1
- #       counter+= percentage
+readFile()
 
-    return occupations 
-        
-
-        
-        
-        
-        
-        
 
     
 
